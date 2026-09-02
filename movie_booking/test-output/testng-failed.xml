@@ -9,7 +9,7 @@
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="beforeMethod"/>
-          <include name="verify_Login"/>
+          <include name="verify_RefershPage"/>
         </methods>
       </class> <!-- testcase.LoginTest -->
     </classes>

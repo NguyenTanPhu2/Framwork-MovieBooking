@@ -81,6 +81,16 @@ public class BasePage {
         return getText(locator, TimeOutConstants.DEFAULT_TIMEOUT);
     }
 
+    /// Action getAttribute
+    public String getAttribute(By locator, String attributeName, long timeOutInSec) {
+        WebElement element = waitVisibilityOfElementLocated(locator, timeOutInSec);
+        return element.getAttribute(attributeName);
+    }
+
+    public String getAttribute(By locator, String attributeName) {
+        return getAttribute(locator, attributeName, TimeOutConstants.DEFAULT_TIMEOUT);
+    }
+
     /// Action doi popup/alert tat
     // enter time out
     public boolean waitInVisibilityOfElementLocated(By locator, long timeOutInSec) {
@@ -91,5 +101,15 @@ public class BasePage {
     //don't enter time out
     public boolean waitInVisibilityOfElementLocated(By locator) {
         return waitInVisibilityOfElementLocated(locator, TimeOutConstants.DEFAULT_TIMEOUT);
+    }
+
+
+    //Kiem tra có hiển thị hay không
+    public boolean isElementDisplayed(By locator) {
+        try {
+            return waitVisibilityOfElementLocated(locator).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

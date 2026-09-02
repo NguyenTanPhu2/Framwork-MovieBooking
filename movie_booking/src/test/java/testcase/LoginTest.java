@@ -4,22 +4,22 @@ import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.modals.CommonModal;
 import base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
+import report.ExtentReportManager;
 
 public class LoginTest extends BaseTest {
+
+    /// Data test
+    private String account = "b0120ebe-fbee-42cf-8f8c-e12e5a1cb270";
+    private String password = "123456";
+
+    private String wrongPassword = "123457";
+    private String wrongAccount = "John";
+
     @Test
-    public void verify_Login() {
+    public void verify_Login_Successfully() {
         ///Pre-codition
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         driver.manage().window().maximize();
 
         driver.get("https://demo1.cybersoft.edu.vn");
@@ -29,34 +29,279 @@ public class LoginTest extends BaseTest {
         CommonModal commonModal = new CommonModal(driver);
         HomePage homePage = new HomePage(driver);
 
-        ///VP1: User login successfully with new account with new account
-        //pre-codition: navigate login page
+        ///Step 1: Navigate to login page
+        LOG.info("Step 1: Navigate to login page");
+        ExtentReportManager.info("Step 1: Navigate to login page");
         homePage.getTopNavigation().navigateLoginPage();
 
-        String account = "b0120ebe-fbee-42cf-8f8c-e12e5a1cb270";
-        String password = "123456";
-
+        ///Step 2: Enter account, Password and click on login button
+        LOG.info("Step 2: Enter account and password");
+        ExtentReportManager.info("Step 2: Enter account and password");
         loginPage.login(account, password);
 
-        //Step 4: Verify login successfully
-        //Vp1 "Đăng nhập thành công" dialog message displays
+        ///Step 3: Verify login successfully
+        LOG.info("Step 3: Verify login successfully");
+        ExtentReportManager.info("Step 3: Verify login successfully");
         String recordedTextLogin = commonModal.getMessageText();
 
-        ///inspect - kiem tra
+        ///inspect
         Assert.assertEquals(recordedTextLogin, "Đăng nhập thành công", "Login message is incorrect!");
 
-        //doi popup tat
+        ///wait for popup to disappear
         commonModal.waitModalDisappear();
 
-        ///VP2: User profile dislays on the top right
-        By byLnkProfile = By.xpath("//a[div[contains(@class,'jss12')]]");
-        WebElement lnkProfile = wait.until(ExpectedConditions.elementToBeClickable(byLnkProfile));
-        lnkProfile.click();
+        ///VP1: Click on user profile
+        LOG.info("VP1: Click on user profile");
+        ExtentReportManager.info("VP1: Click on user profile");
+        loginPage.clickProfile();
 
-        ///VP3: Logout link displays
-        By byLnkLogo = By.xpath("//img[@alt='Logo']");
-        WebElement lnkLogo = wait.until(ExpectedConditions.visibilityOfElementLocated(byLnkLogo));
-        System.out.println("Logo: " + lnkLogo.isDisplayed());
+        ///VP 2: click logout link displays
+        LOG.info("VP2: click logout link displays");
+        ExtentReportManager.info("VP2: click logout link displays");
+        loginPage.clickLogout();
 
+        ///inspect logout message
+        String recordedTextLogout = commonModal.getMessageText();
+        Assert.assertEquals(recordedTextLogout, "Bạn có muốn đăng xuất ?", "Logout message is incorrect!");
+    }
+
+    @Test(priority = 1)
+    public void verify_Login_With_Wrong_Password() {
+        ///Pre-codition
+        driver.manage().window().maximize();
+
+        driver.get("https://demo1.cybersoft.edu.vn");
+
+        ///Khoi tao cho pages
+        LoginPage loginPage = new LoginPage(driver);
+        CommonModal commonModal = new CommonModal(driver);
+        HomePage homePage = new HomePage(driver);
+
+        ///Step 1: Navigate to login page
+        LOG.info("Step 1: Navigate to login page");
+        ExtentReportManager.info("Step 1: Navigate to login page");
+        homePage.getTopNavigation().navigateLoginPage();
+
+        ///Step 2: Enter account
+        LOG.info("Step 2: Enter account");
+        ExtentReportManager.info("Step 2: Enter account");
+        loginPage.enterAccount(account);
+
+        ///Step 3: Enter wrong password
+        LOG.info("Step 3: Enter wrong password");
+        ExtentReportManager.info("Step 3: Enter wrong password");
+        loginPage.enterPassword(wrongPassword);
+
+        //Step 4: Click on login button
+        LOG.info("Step 4: Click on login button");
+        ExtentReportManager.info("Step 4: Click on login button");
+        loginPage.clickLogin();
+
+        ///VP: Verify login unsuccessfully
+        LOG.info("VP: Verify login unsuccessfully");
+        ExtentReportManager.info("VP: Verify login unsuccessfully");
+        String recordedTextLogin = commonModal.getErrorMessageText();
+
+        ///inspect
+        commonModal.getErrorMessageText();
+        Assert.assertEquals(recordedTextLogin, "Tài khoản hoặc mật khẩu không đúng!", "Login message is incorrect!");
+    }
+
+    @Test(priority = 2)
+    public void verify_Login_With_Wrong_Account() {
+        ///Pre-codition
+        driver.manage().window().maximize();
+
+        driver.get("https://demo1.cybersoft.edu.vn");
+
+        ///Khoi tao cho pages
+        LoginPage loginPage = new LoginPage(driver);
+        CommonModal commonModal = new CommonModal(driver);
+        HomePage homePage = new HomePage(driver);
+
+        ///Step 1: Navigate to login page
+        LOG.info("Step 1: Navigate to login page");
+        ExtentReportManager.info("Step 1: Navigate to login page");
+        homePage.getTopNavigation().navigateLoginPage();
+
+        ///Step 2: Enter wrong account
+        LOG.info("Step 2: Enter wrong account");
+        ExtentReportManager.info("Step 2: Enter wrong account");
+        loginPage.enterAccount(wrongAccount);
+
+        ///Step 3: Enter password
+        LOG.info("Step 3: Enter password");
+        ExtentReportManager.info("Step 3: Enter password");
+        loginPage.enterPassword(password);
+
+        //Step 4: Click on login button
+        LOG.info("Step 4: Click on login button");
+        ExtentReportManager.info("Step 4: Click on login button");
+        loginPage.clickLogin();
+
+        ///VP: Verify login unsuccessfully
+        LOG.info("VP: Verify login unsuccessfully");
+        ExtentReportManager.info("VP: Verify login unsuccessfully");
+        String recordedTextLogin = commonModal.getErrorMessageText();
+
+        ///inspect
+        commonModal.getErrorMessageText();
+        Assert.assertEquals(recordedTextLogin, "Tài khoản hoặc mật khẩu không đúng!", "Login message is incorrect!");
+    }
+
+    @Test(priority = 3)
+    public void verify_Login_Empty_Account_And_Password() {
+        ///Pre-codition
+        driver.manage().window().maximize();
+
+        driver.get("https://demo1.cybersoft.edu.vn");
+
+        ///Khoi tao cho pages
+        LoginPage loginPage = new LoginPage(driver);
+        CommonModal commonModal = new CommonModal(driver);
+        HomePage homePage = new HomePage(driver);
+
+        ///Step 1: Navigate to login page
+        LOG.info("Step 1: Navigate to login page");
+        ExtentReportManager.info("Step 1: Navigate to login page");
+        homePage.getTopNavigation().navigateLoginPage();
+
+        ///Step 2: Click on login button without entering account and password
+        LOG.info("Step 2: Click on login button without entering account and password");
+        ExtentReportManager.info("Step 2: Click on login button without entering account and password");
+        loginPage.clickLogin();
+
+        ///VP 1: Verify login account unsuccessfully
+        LOG.info("VP 1: Verify login account unsuccessfully");
+        ExtentReportManager.info("VP 1: Verify login account unsuccessfully");
+        String recordedTextLogin = commonModal.getRequiredAccountMessageText();
+
+        ///inspect
+        commonModal.getRequiredAccountMessageText();
+        Assert.assertEquals(recordedTextLogin, "Đây là trường bắt buộc !", "Login message is incorrect!");
+
+        ///VP 2: Verify login password unsuccessfully
+        LOG.info("VP 2: Verify login password unsuccessfully");
+        ExtentReportManager.info("VP 2: Verify login password unsuccessfully");
+        String recordedTextPassword = commonModal.getRequiredPasswordMessageText();
+        Assert.assertEquals(recordedTextPassword, "Đây là trường bắt buộc !", "Password message is incorrect!");
+    }
+
+    @Test(priority = 4)
+    public void verify_Login_With_Remember_Me() {
+        ///Pre-codition
+        driver.manage().window().maximize();
+        driver.get("https://demo1.cybersoft.edu.vn");
+
+        ///Khoi tao cho pages
+        LoginPage loginPage = new LoginPage(driver);
+        CommonModal commonModal = new CommonModal(driver);
+        HomePage homePage = new HomePage(driver);
+
+        ///Step 1: Navigate to login page
+        LOG.info("Step 1: Navigate to login page");
+        ExtentReportManager.info("Step 1: Navigate to login page");
+        homePage.getTopNavigation().navigateLoginPage();
+
+        ///Step 2:Enter account, Password
+        LOG.info("Step 2:Enter account, Password");
+        ExtentReportManager.info("Step 2:Enter account, Password");
+        loginPage.enterAccount(account);
+        loginPage.enterPassword(password);
+
+        ///Step 3: Click on Remember Me checkbox
+        LOG.info("Step 3: Click on Remember Me checkbox");
+        ExtentReportManager.info("Step 3: Click on Remember Me checkbox");
+        loginPage.clickRememberMeCheckbox();
+
+        ///Step 4: Click on login button
+        LOG.info("Step 4: Click on login button");
+        ExtentReportManager.info("Step 4: Click on login button");
+        loginPage.clickLogin();
+
+        ///VP: Verify login successfully
+        LOG.info("VP: Verify login successfully");
+        ExtentReportManager.info("VP: Verify login successfully");
+        String recordedTextLogin = commonModal.getMessageText();
+        Assert.assertEquals(recordedTextLogin, "Đăng nhập thành công", "Login message is incorrect!");
+
+        commonModal.waitModalDisappear();
+
+        ///Step 5: Click Log out
+        LOG.info("Step 5: Click Log out");
+        ExtentReportManager.info("Step 5: Click Log out");
+        loginPage.clickLogout();
+        loginPage.clickConfirmLogout();
+
+        String recordedTextLogout = commonModal.getMessageText();
+        Assert.assertEquals(recordedTextLogout, "Đã đăng xuất", "Logout message is incorrect!");
+
+        ///Step 6: Navigate to login page again
+        LOG.info("Step 6: Navigate to login page again");
+        ExtentReportManager.info("Step 6: Navigate to login page again");
+
+        ///wait popup disappear
+        commonModal.waitModalDisappear();
+
+        homePage.getTopNavigation().navigateLoginPage();
+
+        String recordedAccountValue = loginPage.getAttributeText("value");
+        Assert.assertEquals(recordedAccountValue, account, "Account value is incorrect!");
+    }
+
+    @Test(priority = 5)
+    public void verify_Register_link() {
+        ///Pre-codition
+        driver.manage().window().maximize();
+        driver.get("https://demo1.cybersoft.edu.vn");
+
+        ///Khoi tao cho pages
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        ///Step 1: Navigate to Register page
+        LOG.info("Step 1: Navigate to Register page");
+        ExtentReportManager.info("Step 1: Navigate to Register page");
+        homePage.getTopNavigation().navigatesRegisterPage();
+
+        ///Step 2: click navigate to login page
+        LOG.info("Step 2: click navigate to login page");
+        ExtentReportManager.info("Step 2: click navigate to login page");
+        loginPage.clickLoginFromRegisterPage();
+    }
+
+    @Test(priority = 6)
+    public void verify_RefershPage() {
+        ///Pre-codition
+        driver.manage().window().maximize();
+        driver.get("https://demo1.cybersoft.edu.vn");
+
+        ///Khoi tao cho pages
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        CommonModal commonModal = new CommonModal(driver);
+
+        ///Step 1: Navigate to Register page
+        LOG.info("Step 1: Navigate to Register page");
+        ExtentReportManager.info("Step 1: Navigate to Register page");
+        homePage.getTopNavigation().navigateLoginPage();
+        ///Step 2: Login page
+        LOG.info("Step 2: Login page");
+        ExtentReportManager.info("Step 2: Login page");
+        loginPage.login(account, password);
+
+        commonModal.waitModalDisappear();
+
+        ///Step 3: Refresh page
+        LOG.info("Step 3: Refresh page");
+        ExtentReportManager.info("Step 3: Refresh page");
+        boolean isUserLoggedInBeforeRefresh =
+                homePage.getTopNavigation().isUserLoggedIn();
+        driver.navigate().refresh();
+
+        ///Verify login status after refresh The logout button appears.
+        LOG.info("Verify login status after refresh The logout button appears.");
+        ExtentReportManager.info("Verify login status after refresh The logout button appears.");
+        Assert.assertTrue(isUserLoggedInBeforeRefresh, "User is not logged in before refresh!");
     }
 }
