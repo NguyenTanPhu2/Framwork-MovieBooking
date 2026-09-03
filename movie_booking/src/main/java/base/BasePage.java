@@ -2,6 +2,7 @@ package base;
 
 import constants.TimeOutConstants;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,6 +15,17 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    /// High-light element
+    public void highlightElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript(
+                "arguments[0].style.border='3px solid red';" +
+                        "arguments[0].style.backgroundColor='yellow';",
+                element
+        );
     }
 
     /// Thoi gian doi
@@ -49,6 +61,7 @@ public class BasePage {
     // enter time out
     public void sendKeys(By locator, String value, long timeOutInSec) {
         WebElement element = waitVisibilityOfElementLocated(locator, timeOutInSec);
+        highlightElement(element);
         element.sendKeys(value);
     }
 
@@ -61,6 +74,7 @@ public class BasePage {
     // enter time out
     public void click(By locator, long timeOutInSec) {
         WebElement element = waitElementToBeClickable(locator, timeOutInSec);
+        highlightElement(element);
         element.click();
     }
 
@@ -73,6 +87,7 @@ public class BasePage {
     // enter time out
     public String getText(By locator, long timeOutInSec) {
         WebElement element = waitVisibilityOfElementLocated(locator, timeOutInSec);
+        highlightElement(element);
         return element.getText();
     }
 
@@ -84,6 +99,7 @@ public class BasePage {
     /// Action getAttribute
     public String getAttribute(By locator, String attributeName, long timeOutInSec) {
         WebElement element = waitVisibilityOfElementLocated(locator, timeOutInSec);
+        highlightElement(element);
         return element.getAttribute(attributeName);
     }
 

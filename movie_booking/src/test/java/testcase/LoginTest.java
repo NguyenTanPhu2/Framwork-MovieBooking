@@ -100,10 +100,10 @@ public class LoginTest extends BaseTest {
         ///VP: Verify login unsuccessfully
         LOG.info("VP: Verify login unsuccessfully");
         ExtentReportManager.info("VP: Verify login unsuccessfully");
-        String recordedTextLogin = commonModal.getErrorMessageText();
+        String recordedTextLogin = commonModal.getErrorMessageTextLogin();
 
         ///inspect
-        commonModal.getErrorMessageText();
+        commonModal.getErrorMessageTextLogin();
         Assert.assertEquals(recordedTextLogin, "Tài khoản hoặc mật khẩu không đúng!", "Login message is incorrect!");
     }
 
@@ -142,10 +142,10 @@ public class LoginTest extends BaseTest {
         ///VP: Verify login unsuccessfully
         LOG.info("VP: Verify login unsuccessfully");
         ExtentReportManager.info("VP: Verify login unsuccessfully");
-        String recordedTextLogin = commonModal.getErrorMessageText();
+        String recordedTextLogin = commonModal.getErrorMessageTextLogin();
 
         ///inspect
-        commonModal.getErrorMessageText();
+        commonModal.getErrorMessageTextLogin();
         Assert.assertEquals(recordedTextLogin, "Tài khoản hoặc mật khẩu không đúng!", "Login message is incorrect!");
     }
 
@@ -174,16 +174,16 @@ public class LoginTest extends BaseTest {
         ///VP 1: Verify login account unsuccessfully
         LOG.info("VP 1: Verify login account unsuccessfully");
         ExtentReportManager.info("VP 1: Verify login account unsuccessfully");
-        String recordedTextLogin = commonModal.getRequiredAccountMessageText();
+        String recordedTextLogin = commonModal.getRequiredAccountMessageTextLogin();
 
         ///inspect
-        commonModal.getRequiredAccountMessageText();
+        commonModal.getRequiredAccountMessageTextLogin();
         Assert.assertEquals(recordedTextLogin, "Đây là trường bắt buộc !", "Login message is incorrect!");
 
         ///VP 2: Verify login password unsuccessfully
         LOG.info("VP 2: Verify login password unsuccessfully");
         ExtentReportManager.info("VP 2: Verify login password unsuccessfully");
-        String recordedTextPassword = commonModal.getRequiredPasswordMessageText();
+        String recordedTextPassword = commonModal.getRequiredPasswordMessageTextLogin();
         Assert.assertEquals(recordedTextPassword, "Đây là trường bắt buộc !", "Password message is incorrect!");
     }
 
@@ -270,8 +270,40 @@ public class LoginTest extends BaseTest {
         loginPage.clickLoginFromRegisterPage();
     }
 
-    @Test(priority = 6)
-    public void verify_RefershPage() {
+    @Test (priority = 6)
+    public void verify_Show_Hide_Password() {
+        ///Pre-codition
+        driver.manage().window().maximize();
+        driver.get("https://demo1.cybersoft.edu.vn");
+
+        ///Khoi tao cho pages
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        ///Step 1: Navigate to Register page
+        LOG.info("Step 1: Navigate to Register page");
+        ExtentReportManager.info("Step 1: Navigate to Register page");
+        homePage.getTopNavigation().navigateLoginPage();
+
+        ///Step 2: Enter password
+        LOG.info("Step 2: Enter password");
+        ExtentReportManager.info("Step 2: Enter password");
+        loginPage.enterPassword(password);
+
+        ///Step 3: Click hide/show password button
+        LOG.info("Step 3: Click hide/show password button");
+        ExtentReportManager.info("Step 3: Click hide/show password button");
+        loginPage.clickHidePassword();
+
+        ///VP: Verify password is hidden
+        LOG.info("VP: Verify password is hidden");
+        ExtentReportManager.info("VP: Verify password is hidden");
+        String recordedPasswordType = loginPage.getAttributeText("type");
+        Assert.assertEquals(recordedPasswordType, "text", "Password is not hidden!");
+    }
+
+    @Test(priority = 7)
+    public void verify_Refresh_Page() {
         ///Pre-codition
         driver.manage().window().maximize();
         driver.get("https://demo1.cybersoft.edu.vn");

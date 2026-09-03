@@ -2,46 +2,46 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-09-02T15:50:30 ICT" name="Gradle suite" finished-at="2026-09-02T15:50:59 ICT" duration-ms="29353">
+  <suite started-at="2026-09-03T14:57:46 ICT" name="Gradle suite" finished-at="2026-09-03T14:57:54 ICT" duration-ms="7214">
     <groups>
     </groups>
-    <test started-at="2026-09-02T15:50:30 ICT" name="Gradle test" finished-at="2026-09-02T15:50:59 ICT" duration-ms="29353">
-      <class name="testcase.LoginTest">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcase.LoginTest@3383649e]" started-at="2026-09-02T15:50:30 ICT" name="beforeSuite" finished-at="2026-09-02T15:50:30 ICT" duration-ms="274" status="PASS">
+    <test started-at="2026-09-03T14:57:46 ICT" name="Gradle test" finished-at="2026-09-03T14:57:54 ICT" duration-ms="7214">
+      <class name="testcase.LogOutTest">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcase.LogOutTest@34625ccd]" started-at="2026-09-03T14:57:46 ICT" name="beforeSuite" finished-at="2026-09-03T14:57:46 ICT" duration-ms="266" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:testcase.LoginTest@3383649e]" started-at="2026-09-02T15:50:30 ICT" name="beforeMethod" finished-at="2026-09-02T15:50:32 ICT" duration-ms="1949" status="PASS">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:testcase.LogOutTest@34625ccd]" started-at="2026-09-03T14:57:46 ICT" name="beforeMethod" finished-at="2026-09-03T14:57:50 ICT" duration-ms="3376" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcase.LoginTest.verify_RefershPage()]]>
+                <![CDATA[public void testcase.LogOutTest.verify_Logout_Successfully()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="verify_RefershPage()[pri:6, instance:testcase.LoginTest@3383649e]" started-at="2026-09-02T15:50:32 ICT" name="verify_RefershPage" finished-at="2026-09-02T15:50:59 ICT" duration-ms="26936" status="PASS">
+        <test-method signature="verify_Logout_Successfully()[pri:0, instance:testcase.LogOutTest@34625ccd]" started-at="2026-09-03T14:57:50 ICT" name="verify_Logout_Successfully" finished-at="2026-09-03T14:57:53 ICT" duration-ms="3447" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_RefershPage -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testcase.LoginTest@3383649e]" started-at="2026-09-02T15:50:59 ICT" name="afterMethod" finished-at="2026-09-02T15:50:59 ICT" duration-ms="419" status="PASS">
+        </test-method> <!-- verify_Logout_Successfully -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testcase.LogOutTest@34625ccd]" started-at="2026-09-03T14:57:53 ICT" name="afterMethod" finished-at="2026-09-03T14:57:53 ICT" duration-ms="342" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verify_RefershPage status=SUCCESS method=LoginTest.verify_RefershPage()[pri:6, instance:testcase.LoginTest@3383649e] output={null}]]]>
+                <![CDATA[[TestResult name=verify_Logout_Successfully status=SUCCESS method=LogOutTest.verify_Logout_Successfully()[pri:0, instance:testcase.LogOutTest@34625ccd] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcase.LoginTest@3383649e]" started-at="2026-09-02T15:50:59 ICT" name="afterSuite" finished-at="2026-09-02T15:51:00 ICT" duration-ms="426" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcase.LogOutTest@34625ccd]" started-at="2026-09-03T14:57:54 ICT" name="afterSuite" finished-at="2026-09-03T14:57:54 ICT" duration-ms="527" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- testcase.LoginTest -->
+      </class> <!-- testcase.LogOutTest -->
     </test> <!-- Gradle test -->
   </suite> <!-- Gradle suite -->
 </testng-results>

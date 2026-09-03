@@ -14,7 +14,7 @@ public class TopNavigation extends BasePage {
     public TopNavigation(WebDriver driver) {
         super(driver);
         this.byLnkLogin = By.xpath("//a[h3[text()='Đăng Nhập']]");
-        this.byLnkRegister = By.xpath("//a[h3[text()='Đăng Ký' ]]");
+        this.byLnkRegister = By.xpath("//a[h3[text()='Đăng Ký']]");
         this.byLnkProfile = By.xpath("//a[@href='/account']");
     }
 

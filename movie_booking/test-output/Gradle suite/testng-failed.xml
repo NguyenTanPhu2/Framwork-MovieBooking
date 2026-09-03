@@ -3,15 +3,15 @@
 <suite name="Failed suite [Gradle suite]" verbose="0">
   <test thread-count="5" name="Gradle test(failed)" verbose="0">
     <classes>
-      <class name="testcase.LoginTest">
+      <class name="testcase.RegisterTest">
         <methods>
           <include name="afterMethod"/>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="beforeMethod"/>
-          <include name="verify_RefershPage"/>
+          <include name="verify_Register_With_Invalid_Email"/>
         </methods>
-      </class> <!-- testcase.LoginTest -->
+      </class> <!-- testcase.RegisterTest -->
     </classes>
   </test> <!-- Gradle test(failed) -->
 </suite> <!-- Failed suite [Gradle suite] -->
