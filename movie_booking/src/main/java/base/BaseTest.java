@@ -25,22 +25,28 @@ public class BaseTest {
         LOG.info("BeforeSuite executing...");
         //khoi tao folder report
         ExtentReportManager.initializeExtentReports();
+        ConfigManager.loadProperties(); //Khoi tao device
         LOG.info("BeforeSuite ended...");
     }
 
     @BeforeMethod
     public void beforeMethod(Method method) {
         LOG.info("BeforeMethod executing...");
-        String platform = ConfigManager.getProperty("platform");
+        String browser = ConfigManager.getProperty("browser");
         //report
         ExtentReportManager.createTest(method.getName());
 
         //Khoi tao driver
-        DriverManager driverManager = DriverManagerFactory.getDriverManager("chrome");
+        DriverManager driverManager = DriverManagerFactory.getDriverManager(browser);
         driverManager.createWebDriver();
 
         //Set driver
         driver = driverManager.getDriver();
+
+        //Get driver
+        driver.manage().window().maximize();
+        driver.get("https://demo1.cybersoft.edu.vn");
+
         LOG.info("BeforeMethod ended...");
 
     }

@@ -16,10 +16,6 @@ public class LogOutTest extends BaseTest {
     private String password = "123456";
     @Test
     public void verify_Logout_Successfully(){
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
 
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);

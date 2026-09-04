@@ -24,11 +24,6 @@ public class RegisterTest extends BaseTest {
     @Test
     public void verify_Register_Successfully() {
 
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
-
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
         CommonModal commonModal = new CommonModal(driver);
@@ -91,12 +86,8 @@ public class RegisterTest extends BaseTest {
         commonModal.waitModalDisappear();
     }
 
-    @Test (priority = 1)
-    public void verify_Register_With_Empty_Required_Fields(){
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
+    @Test(priority = 1)
+    public void verify_Register_With_Empty_Required_Fields() {
 
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
@@ -111,7 +102,7 @@ public class RegisterTest extends BaseTest {
         ///Step 2: Empty all required fields
         LOG.info("Step 2: Empty all required fields");
         ExtentReportManager.info("Step 2: Empty all required fields");
-        registerPage.register("","","","");
+        registerPage.register("", "", "", "");
 
         ///Step 3: Click Register button
         LOG.info("Step 3: Click Register button");
@@ -149,13 +140,9 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(recordedTextEmail, "Đây là trường bắt buộc !", "Error message for empty email is not displayed");
     }
 
-    @Test (priority = 2)
-    public void verify_Hide_Password(){
+    @Test(priority = 2)
+    public void verify_Hide_Password() {
 
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -201,12 +188,9 @@ public class RegisterTest extends BaseTest {
         registerPage.enterEmail(email);
     }
 
-    @Test (priority = 3)
-    public void verify_Register_With_Invalid_Email(){
-        ///Pre-codition
-        driver.manage().window().maximize();
+    @Test(priority = 3)
+    public void verify_Register_With_Invalid_Email() {
 
-        driver.get("https://demo1.cybersoft.edu.vn");
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
         CommonModal commonModal = new CommonModal(driver);
@@ -254,12 +238,9 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(recordedTextEmail, "Email không hợp lệ !", "Error message for invalid email is not displayed");
     }
 
-    @Test (priority = 4)
-    public void verify_Register_With_Mismatched_Confirm_Password(){
-        ///Pre-codition
-        driver.manage().window().maximize();
+    @Test(priority = 4)
+    public void verify_Register_With_Mismatched_Confirm_Password() {
 
-        driver.get("https://demo1.cybersoft.edu.vn");
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
         CommonModal commonModal = new CommonModal(driver);
@@ -307,12 +288,9 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(recordedTextConfirmPassword, "Mật khẩu không khớp !", "Error message for mismatched confirm password is not displayed");
     }
 
-    @Test (priority = 5)
-    public void verify_Login_Link(){
-        ///Pre-codition
-        driver.manage().window().maximize();
+    @Test(priority = 5)
+    public void verify_Login_Link() {
 
-        driver.get("https://demo1.cybersoft.edu.vn");
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -328,12 +306,9 @@ public class RegisterTest extends BaseTest {
         registerPage.clickLoginLink();
     }
 
-    @Test (priority = 6)
-    public void verify_Register_With_Existing_Email(){
-        ///Pre-codition
-        driver.manage().window().maximize();
+    @Test(priority = 6)
+    public void verify_Register_With_Existing_Email() {
 
-        driver.get("https://demo1.cybersoft.edu.vn");
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -356,13 +331,8 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(recordedTextExistingEmail, "Email đã tồn tại!", "Error message for existing email is not displayed");
     }
 
-    @Test (priority = 7)
-    public void verify_Register_With_Invalid_Password()
-    {
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
+    @Test(priority = 7)
+    public void verify_Register_With_Invalid_Password() {
         ///Khoi tao cho pages
         RegisterPage registerPage = new RegisterPage(driver);
         CommonModal commonModal = new CommonModal(driver);

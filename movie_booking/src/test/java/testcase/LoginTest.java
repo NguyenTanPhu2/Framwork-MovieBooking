@@ -17,18 +17,15 @@ public class LoginTest extends BaseTest {
     private String wrongPassword = "123457";
     private String wrongAccount = "John";
 
+
     @Test
     public void verify_Login_Successfully() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
 
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
         CommonModal commonModal = new CommonModal(driver);
         HomePage homePage = new HomePage(driver);
-
+        
         ///Step 1: Navigate to login page
         LOG.info("Step 1: Navigate to login page");
         ExtentReportManager.info("Step 1: Navigate to login page");
@@ -67,11 +64,7 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 1)
     public void verify_Login_With_Wrong_Password() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
-
+ 
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
         CommonModal commonModal = new CommonModal(driver);
@@ -109,11 +102,7 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 2)
     public void verify_Login_With_Wrong_Account() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
-
+ 
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
         CommonModal commonModal = new CommonModal(driver);
@@ -151,11 +140,7 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 3)
     public void verify_Login_Empty_Account_And_Password() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-
-        driver.get("https://demo1.cybersoft.edu.vn");
-
+ 
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
         CommonModal commonModal = new CommonModal(driver);
@@ -189,9 +174,6 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 4)
     public void verify_Login_With_Remember_Me() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-        driver.get("https://demo1.cybersoft.edu.vn");
 
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
@@ -251,10 +233,7 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 5)
     public void verify_Register_link() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-        driver.get("https://demo1.cybersoft.edu.vn");
-
+  
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -272,10 +251,7 @@ public class LoginTest extends BaseTest {
 
     @Test (priority = 6)
     public void verify_Show_Hide_Password() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-        driver.get("https://demo1.cybersoft.edu.vn");
-
+  
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -304,10 +280,7 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 7)
     public void verify_Refresh_Page() {
-        ///Pre-codition
-        driver.manage().window().maximize();
-        driver.get("https://demo1.cybersoft.edu.vn");
-
+  
         ///Khoi tao cho pages
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
