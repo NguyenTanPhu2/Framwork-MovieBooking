@@ -28,7 +28,22 @@ public class BasePage {
         );
     }
 
+    /// Remove High-light element
+    public void removeHighlight(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript(
+                "arguments[0].style.border='';" +
+                        "arguments[0].style.backgroundColor='';",
+                element
+        );
+    }
+
     /// Thoi gian doi
+    public WebDriverWait getWebDriverWait() {
+        return getWebDriverWait();
+    }
+
     public WebDriverWait getWebDriverWait(long timeOutInSec) {
         return new WebDriverWait(driver, Duration.ofSeconds(timeOutInSec));
     }
@@ -63,6 +78,7 @@ public class BasePage {
         WebElement element = waitVisibilityOfElementLocated(locator, timeOutInSec);
         highlightElement(element);
         element.sendKeys(value);
+        removeHighlight(element);
     }
 
     //don't enter time out
@@ -76,6 +92,7 @@ public class BasePage {
         WebElement element = waitElementToBeClickable(locator, timeOutInSec);
         highlightElement(element);
         element.click();
+        removeHighlight(element);
     }
 
     //don't enter time out
@@ -88,6 +105,7 @@ public class BasePage {
     public String getText(By locator, long timeOutInSec) {
         WebElement element = waitVisibilityOfElementLocated(locator, timeOutInSec);
         highlightElement(element);
+        removeHighlight(element);
         return element.getText();
     }
 
@@ -100,6 +118,7 @@ public class BasePage {
     public String getAttribute(By locator, String attributeName, long timeOutInSec) {
         WebElement element = waitVisibilityOfElementLocated(locator, timeOutInSec);
         highlightElement(element);
+        removeHighlight(element);
         return element.getAttribute(attributeName);
     }
 
@@ -124,6 +143,22 @@ public class BasePage {
     public boolean isElementDisplayed(By locator) {
         try {
             return waitVisibilityOfElementLocated(locator).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /// kiem tra option sau select
+    public boolean isOptionDisplayed(By selectLocator, String optionText) {
+        try {
+            WebElement select = waitVisibilityOfElementLocated(selectLocator);
+
+            return select.findElements(By.tagName("option"))
+                    .stream()
+                    .anyMatch(option ->
+                            option.getText().trim().equals(optionText)
+                    );
+
         } catch (Exception e) {
             return false;
         }

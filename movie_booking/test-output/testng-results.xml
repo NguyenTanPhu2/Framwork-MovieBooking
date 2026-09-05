@@ -2,46 +2,46 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-09-04T20:10:16 ICT" name="Gradle suite" finished-at="2026-09-04T20:10:28 ICT" duration-ms="11426">
+  <suite started-at="2026-09-05T11:55:39 ICT" name="Gradle suite" finished-at="2026-09-05T11:55:45 ICT" duration-ms="5339">
     <groups>
     </groups>
-    <test started-at="2026-09-04T20:10:16 ICT" name="Gradle test" finished-at="2026-09-04T20:10:28 ICT" duration-ms="11426">
-      <class name="testcase.SecurityTest">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcase.SecurityTest@34625ccd]" started-at="2026-09-04T20:10:16 ICT" name="beforeSuite" finished-at="2026-09-04T20:10:16 ICT" duration-ms="254" status="PASS">
+    <test started-at="2026-09-05T11:55:39 ICT" name="Gradle test" finished-at="2026-09-05T11:55:45 ICT" duration-ms="5339">
+      <class name="testcase.FilterTest">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcase.FilterTest@2c7d121c]" started-at="2026-09-05T11:55:39 ICT" name="beforeSuite" finished-at="2026-09-05T11:55:39 ICT" duration-ms="251" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:testcase.SecurityTest@34625ccd]" started-at="2026-09-04T20:10:16 ICT" name="beforeMethod" finished-at="2026-09-04T20:10:18 ICT" duration-ms="1942" status="PASS">
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:testcase.FilterTest@2c7d121c]" started-at="2026-09-05T11:55:39 ICT" name="beforeMethod" finished-at="2026-09-05T11:55:42 ICT" duration-ms="3081" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testcase.SecurityTest.verify_Booking_Requires_Login()]]>
+                <![CDATA[public void testcase.FilterTest.verify_Theater_And_Showtime_Default_State()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="verify_Booking_Requires_Login()[pri:0, instance:testcase.SecurityTest@34625ccd]" started-at="2026-09-04T20:10:18 ICT" name="verify_Booking_Requires_Login" finished-at="2026-09-04T20:10:27 ICT" duration-ms="9066" status="PASS">
+        <test-method signature="verify_Theater_And_Showtime_Default_State()[pri:1, instance:testcase.FilterTest@2c7d121c]" started-at="2026-09-05T11:55:42 ICT" name="verify_Theater_And_Showtime_Default_State" finished-at="2026-09-05T11:55:44 ICT" duration-ms="1857" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_Booking_Requires_Login -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testcase.SecurityTest@34625ccd]" started-at="2026-09-04T20:10:27 ICT" name="afterMethod" finished-at="2026-09-04T20:10:28 ICT" duration-ms="374" status="PASS">
+        </test-method> <!-- verify_Theater_And_Showtime_Default_State -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testcase.FilterTest@2c7d121c]" started-at="2026-09-05T11:55:44 ICT" name="afterMethod" finished-at="2026-09-05T11:55:45 ICT" duration-ms="347" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verify_Booking_Requires_Login status=SUCCESS method=SecurityTest.verify_Booking_Requires_Login()[pri:0, instance:testcase.SecurityTest@34625ccd] output={null}]]]>
+                <![CDATA[[TestResult name=verify_Theater_And_Showtime_Default_State status=SUCCESS method=FilterTest.verify_Theater_And_Showtime_Default_State()[pri:1, instance:testcase.FilterTest@2c7d121c] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcase.SecurityTest@34625ccd]" started-at="2026-09-04T20:10:28 ICT" name="afterSuite" finished-at="2026-09-04T20:10:28 ICT" duration-ms="398" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcase.FilterTest@2c7d121c]" started-at="2026-09-05T11:55:45 ICT" name="afterSuite" finished-at="2026-09-05T11:55:45 ICT" duration-ms="668" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- testcase.SecurityTest -->
+      </class> <!-- testcase.FilterTest -->
     </test> <!-- Gradle test -->
   </suite> <!-- Gradle suite -->
 </testng-results>

@@ -1,7 +1,6 @@
 package testcase;
 
 import Pages.BookingPage;
-import Pages.CommonPage;
 import Pages.HomePage;
 import Pages.MovieDetails;
 import Pages.modals.CommonModal;
