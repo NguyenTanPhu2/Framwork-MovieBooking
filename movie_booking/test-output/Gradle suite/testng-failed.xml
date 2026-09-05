@@ -6,10 +6,10 @@
       <class name="testcase.FilterTest">
         <methods>
           <include name="afterMethod"/>
+          <include name="verify_Buy_Ticket_With_Complete_Information"/>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="beforeMethod"/>
-          <include name="verify_Theater_And_Showtime_Default_State"/>
         </methods>
       </class> <!-- testcase.FilterTest -->
     </classes>

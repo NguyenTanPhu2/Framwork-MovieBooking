@@ -1,11 +1,9 @@
 package base;
 
 import constants.TimeOutConstants;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -92,7 +90,6 @@ public class BasePage {
         WebElement element = waitElementToBeClickable(locator, timeOutInSec);
         highlightElement(element);
         element.click();
-        removeHighlight(element);
     }
 
     //don't enter time out
@@ -162,5 +159,14 @@ public class BasePage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public void choose(By selectLocator, String name) {
+        WebElement selectElement = waitVisibilityOfElementLocated(selectLocator);
+
+        Select select = new Select(selectElement);
+        select.selectByVisibleText(name);
+
+        selectElement.sendKeys(Keys.ESCAPE);
     }
 }
